@@ -1,0 +1,23 @@
+stages:
+  - deploy
+
+deploy-to-k8s:
+  stage: deploy
+  image: registry.gitlab.com/splash07/gcloud/gcloud-kubectl:latest
+  before_script:
+    - echo $SERVICE_ACCOUNT > ${HOME}/key.json
+    - gcloud auth activate-service-account --key-file ${HOME}/key.json
+    - gcloud config set project vibing
+    - gcloud container clusters get-credentials --zone asia-southeast1-a project-cluster 
+  script:
+    - envsubst <deployment.yaml.tpl> deployment.yaml
+    - envsubst <ingress.yaml.tpl> service.yaml
+    - kubectl apply -f deployment.yaml
+    - kubectl apply -f service.yaml
+  after_script:
+    - date
+  only:
+    variables:
+      - $PROJECT_NAME
+      - $IMAGE_TAG
+      - $REF_NAME
