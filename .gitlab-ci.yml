@@ -7,7 +7,7 @@ deploy-to-k8s:
   before_script:
     - echo $SERVICE_ACCOUNT > ${HOME}/key.json
     - gcloud auth activate-service-account --key-file ${HOME}/key.json
-    - gcloud config set project vibing
+    - gcloud config set project Vibing
     - gcloud container clusters get-credentials --zone asia-southeast1-a project-cluster 
   script:
     - envsubst <deployment.yaml.tpl> deployment.yaml
