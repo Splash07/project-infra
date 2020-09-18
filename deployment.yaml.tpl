@@ -14,11 +14,11 @@ spec:
       labels:
         app: $PROJECT_NAME
     spec:
+      imagePullSecrets:
+      - name: gitlab-registry
       containers:
       - name: $PROJECT_NAME
         image: registry.gitlab.com/splash07/$PROJECT_NAME/$PROJECT_NAME:$REF_NAME-$IMAGE_TAG
-        imagePullSecrets:
-        - name: gitlab-registry
         ports:
         - containerPort: 80
         resources:
