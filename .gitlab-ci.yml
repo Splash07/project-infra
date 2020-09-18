@@ -11,9 +11,7 @@ deploy-to-k8s:
     - gcloud container clusters get-credentials --zone asia-southeast1-a project-cluster 
   script:
     - envsubst <deployment.yaml.tpl> deployment.yaml
-    - cat deployment.yaml
     - envsubst <service.yaml.tpl> service.yaml
-    - cat service.yaml
     - kubectl apply -f deployment.yaml
     - kubectl apply -f service.yaml
   after_script:
