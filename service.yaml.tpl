@@ -7,6 +7,10 @@ spec:
   selector:
     app: $PROJECT_NAME
   ports:
-    - protocol: TCP
-      port: 80
+    - port: 80
       targetPort: 80
+      protocol: TCP
+
+
+
+
