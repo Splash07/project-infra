@@ -13,7 +13,6 @@ deploy-to-k8s:
     - envsubst <deployment.yaml.tpl> deployment.yaml
     - envsubst <service.yaml.tpl> service.yaml
     - kubectl apply -f deployment.yaml
-    - cat service.yaml
     - kubectl apply -f service.yaml
   after_script:
     - date
