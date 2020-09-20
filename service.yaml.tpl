@@ -8,5 +8,5 @@ spec:
     app: $PROJECT_NAME
   ports:
     - protocol: TCP
-      targetPort: 80
       port: 80
+      targetPort: 80
