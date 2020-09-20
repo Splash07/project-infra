@@ -10,7 +10,3 @@ spec:
     - port: 80
       targetPort: 80
       protocol: TCP
-
-
-
-
